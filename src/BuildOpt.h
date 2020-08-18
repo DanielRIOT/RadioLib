@@ -32,22 +32,23 @@
  */
 
 // uncomment to enable custom platform definition
-//#define RADIOLIB_CUSTOM_PLATFORM
+#define RADIOLIB_CUSTOM_PLATFORM
+
+
 
 #if defined(RADIOLIB_CUSTOM_PLATFORM)
-  // name for your platform
-  #define RADIOLIB_PLATFORM                           "Custom"
-
-  // the following parameters must always be defined
-  #define RADIOLIB_PIN_TYPE                           uint8_t
-  #define RADIOLIB_PIN_MODE                           uint8_t
-  #define RADIOLIB_PIN_STATUS                         uint8_t
-  #define RADIOLIB_INTERRUPT_STATUS                   RADIOLIB_PIN_STATUS
-  #define RADIOLIB_DIGITAL_PIN_TO_INTERRUPT(p)        digitalPinToInterrupt(p)
-  #define RADIOLIB_NC                                 (0xFF)
-  #define RADIOLIB_DEFAULT_SPI                        SPI
-  #define RADIOLIB_PROGMEM                            PROGMEM
-  #define RADIOLIB_PROGMEM_READ_BYTE(addr)            pgm_read_byte(addr)
+#define RADIOLIB_PLATFORM                           "Riot/R34 Stamp SAMR"
+#define RADIOLIB_PIN_TYPE                           uint32_t
+#define RADIOLIB_PIN_MODE                           uint32_t
+#define RADIOLIB_PIN_STATUS                         uint32_t
+#define RADIOLIB_INTERRUPT_STATUS                   RADIOLIB_PIN_STATUS
+#define RADIOLIB_DIGITAL_PIN_TO_INTERRUPT(p)        digitalPinToInterrupt(p)
+#define RADIOLIB_NC                                 (0xFFFFFFFF)
+#define RADIOLIB_DEFAULT_SPI                        SPI
+#define RADIOLIB_PROGMEM                            PROGMEM
+#define RADIOLIB_PROGMEM_READ_BYTE(addr)            pgm_read_byte(addr)
+#define RADIOLIB_SOFTWARE_SERIAL_UNSUPPORTED
+#define RADIOLIB_HARDWARE_SERIAL_PORT               Serial1
 
   // the following must be defined if the Arduino core does not support SoftwareSerial library
   //#define RADIOLIB_SOFTWARE_SERIAL_UNSUPPORTED
@@ -61,28 +62,28 @@
   // NOTE: Some of the exclusion macros are dependent on each other. For example, it is not possible to exclude RF69
   //       while keeping SX1231 (because RF69 is the base class for SX1231). The dependency is always uni-directional,
   //       so excluding SX1231 and keeping RF69 is valid.
-  //#define RADIOLIB_EXCLUDE_CC1101
-  //#define RADIOLIB_EXCLUDE_ESP8266
-  //#define RADIOLIB_EXCLUDE_HC05
-  //#define RADIOLIB_EXCLUDE_JDY08
-  //#define RADIOLIB_EXCLUDE_NRF24
-  //#define RADIOLIB_EXCLUDE_RF69
-  //#define RADIOLIB_EXCLUDE_SX1231     // dependent on RADIOLIB_EXCLUDE_RF69
-  //#define RADIOLIB_EXCLUDE_SI443X
-  //#define RADIOLIB_EXCLUDE_RFM2X      // dependent on RADIOLIB_EXCLUDE_SI443X
-  //#define RADIOLIB_EXCLUDE_SX127X
-  //#define RADIOLIB_EXCLUDE_RFM9X      // dependent on RADIOLIB_EXCLUDE_SX127X
-  //#define RADIOLIB_EXCLUDE_SX126X
-  //#define RADIOLIB_EXCLUDE_SX128X
-  //#define RADIOLIB_EXCLUDE_XBEE
-  //#define RADIOLIB_EXCLUDE_AFSK
-  //#define RADIOLIB_EXCLUDE_AX25
-  //#define RADIOLIB_EXCLUDE_HELLSCHREIBER
-  //#define RADIOLIB_EXCLUDE_HTTP
-  //#define RADIOLIB_EXCLUDE_MORSE
-  //#define RADIOLIB_EXCLUDE_MQTT
-  //#define RADIOLIB_EXCLUDE_RTTY
-  //#define RADIOLIB_EXCLUDE_SSTV
+#define RADIOLIB_EXCLUDE_CC1101
+#define RADIOLIB_EXCLUDE_ESP8266
+#define RADIOLIB_EXCLUDE_HC05
+#define RADIOLIB_EXCLUDE_JDY08
+#define RADIOLIB_EXCLUDE_NRF24
+#define RADIOLIB_EXCLUDE_RF69
+#define RADIOLIB_EXCLUDE_SX1231     // dependent on RADIOLIB_EXCLUDE_RF69
+#define RADIOLIB_EXCLUDE_SI443X
+#define RADIOLIB_EXCLUDE_RFM2X      // dependent on RADIOLIB_EXCLUDE_SI443X
+//#define RADIOLIB_EXCLUDE_SX127X
+//#define RADIOLIB_EXCLUDE_RFM9X      // dependent on RADIOLIB_EXCLUDE_SX127X
+//#define RADIOLIB_EXCLUDE_SX126X
+//#define RADIOLIB_EXCLUDE_SX128X
+#define RADIOLIB_EXCLUDE_XBEE
+//#define RADIOLIB_EXCLUDE_AFSK
+//#define RADIOLIB_EXCLUDE_AX25
+//#define RADIOLIB_EXCLUDE_HELLSCHREIBER
+//#define RADIOLIB_EXCLUDE_HTTP
+//#define RADIOLIB_EXCLUDE_MORSE
+//#define RADIOLIB_EXCLUDE_MQTT
+//#define RADIOLIB_EXCLUDE_RTTY
+//#define RADIOLIB_EXCLUDE_SSTV
 
 #else
   #if defined(__AVR__) && !(defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(ARDUINO_AVR_NANO_EVERY))
